@@ -57,7 +57,7 @@ public class SeckillController {
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public SeckillResult<Exposer> exposer(Long seckillId) {
+    public SeckillResult<Exposer> exposer(@PathVariable  Long seckillId) {
 
 
         SeckillResult<Exposer> result;
@@ -71,7 +71,7 @@ public class SeckillController {
         return result;
     }
 
-    @RequestMapping(value = "/{seckillId/{md5}/execution",
+    @RequestMapping(value = "/{seckillId}/{md5}/execution",
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
@@ -100,6 +100,7 @@ public class SeckillController {
     }
 
     @RequestMapping(value = "/time/now",method = RequestMethod.GET)
+    @ResponseBody
     public SeckillResult<Long> time(){
         Date now = new Date();
         return new SeckillResult<Long>(true,now.getTime());
